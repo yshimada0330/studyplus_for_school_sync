@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'studyplus_for_school_sync'
+gem 'studyplus_for_school_sync',  github: 'yshimada0330/studyplus_for_school_sync'
 ```
 
 And then execute:
@@ -22,7 +22,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+ ```ruby
+ client = StudyplusForSchoolSync::Client.new(base_url: ENV["BASE_URL"], access_token: ENV["ACCESS_TOKEN"])
+ response = client.create_partner(school_name: "school A")
+ response.status # => 200
+ response.body # => {"public_id"=>"12345abcde"}
+
+ response = client.create_student(
+   partner_public_id: response.body["public_id"],
+   last_name: "山田",
+   first_name: "太郎",
+   last_name_kana: "ヤマダ",
+   first_name_kana: "タロウ"
+ )
+ student_public_id = response.body["public_id"]
+
+ response = client.create_learning_material(name: "text A")
+ learning_material_public_id = response.body["public_id"]
+ response = client.update_learning_material(learning_material_public_id: learning_material_public_id, name: "text B")
+
+ response = client.create_study_record(
+   learning_material_public_id: learning_material_public_id,
+   student_public_id: student_public_id,
+   recorded_at: "2020/03/01 09:30:10",
+   number_of_seconds: 600
+ )
+
+ response = client.create_passcode(student_public_id)
+ ```
 
 ## Development
 
