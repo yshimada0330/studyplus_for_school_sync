@@ -14,12 +14,19 @@ module StudyplusForSchoolSync
     end
 
     def post(path:, params:)
-      headers = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
-      headers['Authorization'] = "Bearer #{access_token}" if access_token
-      @client.post("#{@base_url}/#{path}", body: params, header: headers)
+      @client.post("#{@base_url}/#{path}", body: params, header: default_header)
     end
 
-    def patch
+    def patch(path:, params:)
+      @client.patch("#{@base_url}/#{path}", body: params, header: default_header)
+    end
+    
+    private
+
+    def default_header
+      header = { 'Accept' => 'application/json', 'Content-Type' => 'application/json' }
+      header['Authorization'] = "Bearer #{access_token}" if access_token 
+      header
     end
   end
 end
