@@ -26,6 +26,10 @@ module StudyplusForSchoolSync
           )
         )
       end
+
+      def create_passcode(student_public_id)
+        post(path: "#{BASE_PAH}/students/#{student_public_id}/passcode")
+      end
     end
   end
 end

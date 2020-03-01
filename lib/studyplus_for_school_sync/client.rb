@@ -13,11 +13,11 @@ module StudyplusForSchoolSync
     def get
     end
 
-    def post(path:, params:)
+    def post(path:, params: nil)
       @client.post("#{@base_url}/#{path}", body: params, header: default_header)
     end
 
-    def put(path:, params:)
+    def put(path:, params: nil)
       @client.put("#{@base_url}/#{path}", body: params, header: default_header)
     end
     
