@@ -17,8 +17,8 @@ module StudyplusForSchoolSync
       @client.post("#{@base_url}/#{path}", body: params, header: default_header)
     end
 
-    def patch(path:, params:)
-      @client.patch("#{@base_url}/#{path}", body: params, header: default_header)
+    def put(path:, params:)
+      @client.put("#{@base_url}/#{path}", body: params, header: default_header)
     end
     
     private
