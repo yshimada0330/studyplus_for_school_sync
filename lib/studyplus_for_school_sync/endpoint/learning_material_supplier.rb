@@ -33,7 +33,7 @@ module StudyplusForSchoolSync
 
       def create_study_record(learning_material_public_id:, student_public_id:, recorded_at:, **options)
         post(
-          path: "#{BASE_PAH}/study_record",
+          path: "#{BASE_PAH}/study_records",
           params: options.merge(
             learning_material_public_id: learning_material_public_id,
             student_public_id: student_public_id,
