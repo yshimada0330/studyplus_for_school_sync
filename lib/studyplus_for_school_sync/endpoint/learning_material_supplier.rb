@@ -30,6 +30,17 @@ module StudyplusForSchoolSync
       def create_passcode(student_public_id)
         post(path: "#{BASE_PAH}/students/#{student_public_id}/passcode")
       end
+
+      def create_study_record(learning_material_public_id:, student_public_id:, recorded_at:, **options)
+        post(
+          path: "#{BASE_PAH}/study_record",
+          params: options.merge(
+            learning_material_public_id: learning_material_public_id,
+            student_public_id: student_public_id,
+            recorded_at: recorded_at
+          )
+        )
+      end
     end
   end
 end
