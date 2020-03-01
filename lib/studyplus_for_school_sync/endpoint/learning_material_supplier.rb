@@ -14,6 +14,18 @@ module StudyplusForSchoolSync
       def update_learning_material(learning_material_public_id:, name:, **options)
         put(path: "#{BASE_PAH}/learning_materials/#{learning_material_public_id}", params: options.merge(name: name))
       end
+
+      def create_student(partner_public_id:, last_name:, first_name:, last_name_kana:, first_name_kana:, **options)
+        post(
+          path: "#{BASE_PAH}/partners/#{partner_public_id}/students",
+          params: options.merge(
+            last_name: last_name,
+            first_name: first_name,
+            last_name_kana: last_name_kana,
+            first_name_kana: first_name_kana
+          )
+        )
+      end
     end
   end
 end
