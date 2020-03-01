@@ -2,6 +2,7 @@ require "studyplus_for_school_sync/version"
 
 require "jsonclient"
 
+require "studyplus_for_school_sync/endpoint"
 require "studyplus_for_school_sync/client"
 
 module StudyplusForSchoolSync

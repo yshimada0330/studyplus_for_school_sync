@@ -1,5 +1,7 @@
 module StudyplusForSchoolSync
   class Client
+    include Endpoint
+
     def initialize(base_url:)
       @base_url = base_url
       @client = JSONClient.new
