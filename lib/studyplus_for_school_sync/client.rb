@@ -7,18 +7,20 @@ module StudyplusForSchoolSync
     def initialize(base_url:, access_token: nil)
       @base_url = base_url
       @access_token = access_token
-      @client = JSONClient.new
+      @conn = Faraday.new(
+        headers: default_header
+      )
     end
 
     def get
     end
 
     def post(path:, params: nil)
-      @client.post("#{@base_url}/#{path}", body: params, header: default_header)
+      @conn.post("#{@base_url}/#{path}", params)
     end
 
     def put(path:, params: nil)
-      @client.put("#{@base_url}/#{path}", body: params, header: default_header)
+      @conn.put("#{@base_url}/#{path}", params)
     end
     
     private
