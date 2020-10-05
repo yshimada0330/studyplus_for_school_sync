@@ -13,7 +13,7 @@ module StudyplusForSchoolSync
     end
 
     def get(path:, params: nil)
-      @conn.post(build_url(path)) do |req|
+      @conn.get(build_url(path)) do |req|
         req.params = params if params
       end
     end
