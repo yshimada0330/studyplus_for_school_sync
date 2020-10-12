@@ -1,4 +1,5 @@
 require "uri"
+require "json"
 
 module StudyplusForSchoolSync
   class Client
