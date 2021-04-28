@@ -1,5 +1,6 @@
 require "uri"
 require "json"
+require 'faraday/encoding'
 
 module StudyplusForSchoolSync
   class Client
@@ -10,7 +11,10 @@ module StudyplusForSchoolSync
     def initialize(base_url:, access_token: nil)
       @base_url = base_url
       @access_token = access_token
-      @conn = Faraday.new(headers: default_header)
+      @conn = Faraday.new(headers: default_header) do |connection|
+        connection.response :encoding  # use Faraday::Encoding middleware
+        connection.adapter Faraday.default_adapter # net/http
+      end
     end
 
     def get(path:, params: nil)
