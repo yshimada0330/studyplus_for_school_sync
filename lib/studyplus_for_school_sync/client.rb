@@ -1,6 +1,7 @@
 require "uri"
 require "json"
-require 'faraday/encoding'
+require "faraday"
+require "faraday/encoding"
 
 module StudyplusForSchoolSync
   class Client

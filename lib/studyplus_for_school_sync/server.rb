@@ -4,11 +4,11 @@ require "erb"
 
 module StudyplusForSchoolSync
   class Server
-    def start
+    def start(port: "8080")
       root = File.expand_path("../html/index.erb", __FILE__)
 
       server = WEBrick::HTTPServer.new(
-        Port: 8080,
+        Port: port,
         DocumentRoot: ".",
         SSLEnable: true,
         SSLCertName: [["CN", WEBrick::Utils.getservername]],
