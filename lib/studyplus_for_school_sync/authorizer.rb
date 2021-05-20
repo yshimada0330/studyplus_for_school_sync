@@ -8,9 +8,10 @@ module StudyplusForSchoolSync
     END_POINT = "learning_material_supplier_api/v1/oauth/authorize"
     DEFAULT_SCOPES = %w(learning_material_supplier lms_passcode_issue)
 
-    attr_reader :client_id, :redirect_uri, :scopes
+    attr_reader :base_url, :client_id, :redirect_uri, :scopes
 
-    def initialize(client_id: nil, redirect_uri: nil, scopes: DEFAULT_SCOPES)
+    def initialize(base_url: nil, client_id: nil, redirect_uri: nil, scopes: DEFAULT_SCOPES)
+      @base_url = base_url || ENV["BASE_URL"]
       @client_id = client_id || ENV["CLIENT_ID"]
       @redirect_uri = redirect_uri || OOB_URI
       @scopes = scopes
@@ -24,7 +25,7 @@ module StudyplusForSchoolSync
     private
 
     def build_url(query)
-      "#{URI.join(ENV["BASE_URL"], END_POINT)}?#{query}"
+      "#{URI.join(base_url, END_POINT)}?#{query}"
     end
   end
 end
