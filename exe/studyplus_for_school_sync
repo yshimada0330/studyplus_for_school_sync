@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "studyplus_for_school_sync"
+
+StudyplusForSchoolSync::Cli.start
