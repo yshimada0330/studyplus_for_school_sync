@@ -1,0 +1,20 @@
+<html>
+    <head>
+      <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h2>Authorization Code</h2>
+        <div><%= code %></div>
+
+        <h2>Request Token</h2>
+        <form action="<%= ENV["BASE_URL"]%>/learning_material_supplier_api/v1/oauth/token" method="post">
+          <p>client_id: <input type="text" name="client_id" value="<%= ENV["CLIENT_ID"]%>"></p>
+          <p>client_secret: <input type="text" name="client_secret"></p>
+          <p>redirect_uri: <input type="text" name="redirect_uri"></p>
+          <p>grant_type: <input type="text" name="grant_type" value="authorization_code"></p>
+          <p>code: <input type="text" name="code" value="<%= code %>"></p>
+
+          <input type="submit" value="送信">
+        </form>
+    </body>
+</html>
