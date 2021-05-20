@@ -5,6 +5,7 @@ PATH
       faraday
       faraday-encoding
       launchy
+      thor
       webrick
 
 GEM
@@ -43,6 +44,7 @@ GEM
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
     ruby2_keywords (0.0.4)
+    thor (1.1.0)
     webrick (1.7.0)
 
 PLATFORMS
