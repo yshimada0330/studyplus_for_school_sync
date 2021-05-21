@@ -34,21 +34,23 @@ Redirect Server Start:
 
 Retrieve Authorization Code:
 
-    $ bundle exec exe/studyplus_for_school_sync authorize {client_id}
+    $ bundle exec exe/studyplus_for_school_sync authorize {base_url} {client_id}
 
 Retrieve Authorization Code
 
 Create/Refresh Token:
 
-```ruby
+````ruby
 authorization_code = "xxx" # Retrieve Authorization Code
 token = StudyplusForSchoolSync::Token.new(base_url: ENV["BASE_URL"], client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
 response = token.create(authorization_code: authorization_code, redirect_uri: "https://localhost:8080")
-response_body = JSON.parse(response.body) # => {"access_token"=>"xxxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621398508}
+response.status # => 200
+response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621558627}
 
-response = token.refresh(response_body["refresh_token"])
-response_body = JSON.parse(response.body) # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621398923}
-```
+
+response = token.refresh(response.body["refresh_token"])
+response.status # => 200
+response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621558753}
 
 ### Resource Access
 
@@ -67,6 +69,8 @@ response = client.create_student(
   last_name_kana: "ヤマダ",
   first_name_kana: "タロウ"
 )
+response.status #=> 200
+response.body # => {"public_id"=>"xxxx"}
 student_public_id = response.body["public_id"]
 
 response = client.create_learning_material(name: "text A")
@@ -81,7 +85,7 @@ response = client.create_study_record(
 )
 
 response = client.create_passcode(student_public_id)
-```
+````
 
 ## Contributing
 
