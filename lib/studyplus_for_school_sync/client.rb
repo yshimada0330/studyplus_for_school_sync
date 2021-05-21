@@ -37,6 +37,16 @@ module StudyplusForSchoolSync
         req.body = params.to_json if params
       end
     end
+
+    def patch(path:, params: nil)
+      @conn.patch(build_url(path)) do |req|
+        req.body = params.to_json if params
+      end
+    end
+
+    def delete(path:)
+      @conn.delete(build_url(path))
+    end
     
     private
 
