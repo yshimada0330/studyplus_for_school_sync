@@ -1,7 +1,21 @@
 module StudyplusForSchoolSync
   module Endpoint
-    module Tag
-      BASE_PAH = "learning_material_supplier_api/v1"
+    module Partner
+      def create_partner(school_name:, **options)
+        post(path: "#{BASE_PAH}/partners", params: options.merge(school_name: school_name))
+      end
+
+      def create_student(partner_public_id:, last_name:, first_name:, last_name_kana:, first_name_kana:, **options)
+        post(
+          path: "#{BASE_PAH}/partners/#{partner_public_id}/students",
+          params: options.merge(
+            last_name: last_name,
+            first_name: first_name,
+            last_name_kana: last_name_kana,
+            first_name_kana: first_name_kana
+          )
+        )
+      end
 
       def tags(partner_id:, page: 1)
         get(path: "#{BASE_PAH}/partners/#{partner_id}/tags", params: { page: page })
@@ -21,3 +35,4 @@ module StudyplusForSchoolSync
     end
   end
 end
+ 

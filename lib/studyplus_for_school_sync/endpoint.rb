@@ -1,9 +1,13 @@
-require_relative "endpoint/learning_material_supplier"
-require_relative "endpoint/tag"
+require_relative "endpoint/learning_material"
+require_relative "endpoint/partner"
+require_relative "endpoint/student"
 
 module StudyplusForSchoolSync
   module Endpoint
-    include LearningMaterialSupplier
-    include Tag
+    BASE_PAH = "learning_material_supplier_api/v1"
+
+    include LearningMaterial
+    include Partner
+    include Student
   end
 end
