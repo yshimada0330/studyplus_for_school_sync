@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "faraday"
   spec.add_dependency "faraday-encoding"
+  spec.add_dependency "faraday_middleware"
   spec.add_dependency "launchy"
   spec.add_dependency "thor"
   spec.add_dependency "webrick"

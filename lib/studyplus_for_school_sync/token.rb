@@ -2,6 +2,7 @@ require "uri"
 require "json"
 require "faraday"
 require "faraday/encoding"
+require "faraday_middleware"
 
 module StudyplusForSchoolSync
   class Token
@@ -15,6 +16,7 @@ module StudyplusForSchoolSync
       @client_id = client_id
       @client_secret = client_secret
       @conn = Faraday.new(headers: default_header) do |connection|
+        connection.response :json
         connection.response :encoding
         connection.adapter Faraday.default_adapter
       end

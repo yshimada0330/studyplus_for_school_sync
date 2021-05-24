@@ -4,6 +4,7 @@ PATH
     studyplus_for_school_sync (0.1.0)
       faraday
       faraday-encoding
+      faraday_middleware
       launchy
       thor
       webrick
@@ -25,6 +26,8 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     multipart-post (2.1.1)
