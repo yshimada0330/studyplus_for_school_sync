@@ -12,7 +12,7 @@ module StudyplusForSchoolSync
       StudyplusForSchoolSync::Server.new.start(**params)
     end
 
-    desc "authorize CLIENT_ID", "Retrieve Authorization Code. ex) authorize https://xxxx.studyplus.co.jp xxxxxxxx"
+    desc "authorize [BASE_URL] [CLIENT_ID]", "Retrieve Authorization Code. ex) authorize https://xxxx.studyplus.co.jp xxxxxxxx"
     option :redirect_uri
     def authorize(base_url, client_id)
       params = { client_id: client_id, base_url: base_url, redirect_uri: DEFAULT_REDIRECT_URI }

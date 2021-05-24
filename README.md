@@ -1,6 +1,8 @@
 # StudyplusForSchoolSync
 
-Ruby Client for [Studyplus for School SYNC API](https://studyplus.github.io/fs-sync-api/)
+A Ruby Client for [Studyplus for School SYNC API](https://studyplus.github.io/fs-sync-api/)
+
+[![Build Status](https://travis-ci.com/yshimada0330/studyplus_for_school_sync.svg?branch=master)](https://travis-ci.com/yshimada0330/studyplus_for_school_sync)
 
 ## Installation
 
@@ -30,11 +32,11 @@ Or install it yourself as:
 
 Redirect Server Start:
 
-    $ bundle exec exe/studyplus_for_school_sync server
+    $ bundle exec studyplus_for_school_sync server
 
 Retrieve Authorization Code:
 
-    $ bundle exec exe/studyplus_for_school_sync authorize {base_url} {client_id}
+    $ bundle exec studyplus_for_school_sync authorize [BASE_URL] [CLIENT_ID]
 
 Retrieve Authorization Code
 
