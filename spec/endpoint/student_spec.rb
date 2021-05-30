@@ -18,11 +18,11 @@ RSpec.describe StudyplusForSchoolSync::Endpoint::Student do
   end
 
   context "#create_passcode" do
-    let(:student_public_id) { "sample_id" }
+    let(:student_id) { "student_id" }
 
     it "status=200" do
-      stubs.post("#{base_url}/learning_material_supplier_api/v1/students/#{student_public_id}/passcode") do |env|
-        expect(env.url.path).to eq("/learning_material_supplier_api/v1/students/#{student_public_id}/passcode")
+      stubs.post("#{base_url}/learning_material_supplier_api/v1/students/#{student_id}/passcode") do |env|
+        expect(env.url.path).to eq("/learning_material_supplier_api/v1/students/#{student_id}/passcode")
         [
           200,
           { 'Content-Type': 'application/json' },
@@ -32,7 +32,24 @@ RSpec.describe StudyplusForSchoolSync::Endpoint::Student do
         ]
       end
 
-      expect(client.create_passcode(student_public_id).body).to eq({ "code" => "abc123" })
+      expect(client.create_passcode(student_id).body).to eq({ "code" => "abc123" })
+      stubs.verify_stubbed_calls
+    end
+  end
+
+  context "#inactivate_passcode" do
+    let(:student_id) { "student_id" }
+
+    it "status=204" do
+      stubs.delete("#{base_url}/learning_material_supplier_api/v1/students/#{student_id}/passcode") do |env|
+        expect(env.url.path).to eq("/learning_material_supplier_api/v1/students/#{student_id}/passcode")
+        [
+          204,
+          { 'Content-Type': 'application/json' },
+        ]
+      end
+
+      expect(client.inactivate_passcode(student_id).body).to be_nil 
       stubs.verify_stubbed_calls
     end
   end
