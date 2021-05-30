@@ -91,7 +91,7 @@ RSpec.describe StudyplusForSchoolSync::Endpoint::Partner do
               "customer_uid" => "abcde12345",
               "name" => "string",
               "public_id" => "string"
-              }
+            }
           ],
           "meta" => { "current_page" => 0, "total_pages" => 0 }
         }
