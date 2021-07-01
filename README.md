@@ -42,8 +42,6 @@ Retrieve Authorization Code:
 
     $ bundle exec studyplus_for_school_sync authorize [BASE_URL] [CLIENT_ID]
 
-Retrieve Authorization Code
-
 Create/Refresh Token:
 
 ```ruby
