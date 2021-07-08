@@ -1,6 +1,6 @@
 RSpec.describe StudyplusForSchoolSync::Cli do
   describe "#authorize" do
-    subject { described_class.start(%w[authorize https://example.com xxxxxxxx --redirect_uri http://localhost])}
+    subject { described_class.start(%w[authorize https://example.com xxxxxxxx --redirect_uri http://localhost --scopes a,b])}
 
     let(:authorizer) { instance_double(StudyplusForSchoolSync::Authorizer) }
     let(:params) do
@@ -8,6 +8,7 @@ RSpec.describe StudyplusForSchoolSync::Cli do
         base_url: "https://example.com",
         client_id: "xxxxxxxx",
         redirect_uri: "http://localhost",
+        scopes: ["a", "b"],
       }
     end
 
