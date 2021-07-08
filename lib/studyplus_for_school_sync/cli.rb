@@ -1,6 +1,7 @@
 require "thor"
 
 module StudyplusForSchoolSync
+  # Command Line Tool
   class Cli < Thor
     DEFAULT_REDIRECT_URI = "https://localhost:8080"
 
