@@ -1,12 +1,15 @@
 # StudyplusForSchoolSync
 
+[![Build Status](https://travis-ci.com/yshimada0330/studyplus_for_school_sync.svg?branch=master)](https://travis-ci.com/yshimada0330/studyplus_for_school_sync)
+[![Maintainability](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/maintainability)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/test_coverage)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/test_coverage)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/yshimada0330/studyplus_for_school_sync)
+[![Inline docs](https://inch-ci.org/github/yshimada0330/studyplus_for_school_sync.svg?branch=master)](http://inch-ci.org/github/yshimada0330/studyplus_for_school_sync)
+![GitHub](https://img.shields.io/github/license/yshimada0330/studyplus_for_school_sync)
+
 A Ruby Client for [Studyplus for School SYNC API](https://studyplus.github.io/fs-sync-api/)
 
-[![Build Status](https://travis-ci.com/yshimada0330/studyplus_for_school_sync.svg?branch=master)](https://travis-ci.com/yshimada0330/studyplus_for_school_sync)
-
-[![Maintainability](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/maintainability)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/maintainability)
-
-[![Test Coverage](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/test_coverage)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/test_coverage)
+![logo](https://user-images.githubusercontent.com/7440963/124934927-251b3180-e040-11eb-82bf-04cf82021593.jpg)
 
 ## Installation
 
