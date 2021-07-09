@@ -5,12 +5,15 @@ require "faraday/encoding"
 require "faraday_middleware"
 
 module StudyplusForSchoolSync
+  # Handling access token
   class Token
-
     END_POINT = "/learning_material_supplier_api/v1/oauth/token"
 
     attr_reader :base_url, :client_id, :client_secret, :grant_type
 
+    # @param base_url [String] API domain
+    # @param client_id [String] Application ClientID
+    # @param client_secret [String] Application Secret 
     def initialize(base_url:, client_id:, client_secret:)
       @base_url = base_url
       @client_id = client_id
@@ -22,6 +25,9 @@ module StudyplusForSchoolSync
       end
     end
  
+    # Creating a token from authorization code
+    # @param authorization_code [String] Authorization Code
+    # @param redirect_uri [String] Application Redirect URI
     def create(authorization_code:, redirect_uri:)
       post(
         path: END_POINT,
@@ -35,6 +41,8 @@ module StudyplusForSchoolSync
       )
     end
 
+    # Refresh Token
+    # @param refresh_token [String] Refresh token obtained during token generation
     def refresh(refresh_token)
       post(
         path: END_POINT,

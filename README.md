@@ -41,6 +41,14 @@ Redirect Server Start:
 
     $ bundle exec studyplus_for_school_sync server
 
+=> https://localhost:8080/
+
+If you want to change the port
+
+    $ bundle exec studyplus_for_school_sync server --port 3000
+
+=> https://localhost:3000/
+
 Retrieve Authorization Code:
 
     $ bundle exec studyplus_for_school_sync authorize [BASE_URL] [CLIENT_ID]
@@ -48,8 +56,11 @@ Retrieve Authorization Code:
 Create/Refresh Token:
 
 ```ruby
+base_url = "https://sandbox.fs-lms.studyplus.co.jp" # SYNC API URL
+client_id = "sample_id" # YOUR CLIENT_ID
+client_secret = "sample_pass" # YOUR CLIENT SECRET
 authorization_code = "xxx" # Retrieve Authorization Code
-token = StudyplusForSchoolSync::Token.new(base_url: ENV["BASE_URL"], client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"])
+token = StudyplusForSchoolSync::Token.new(base_url: base_url, client_id: client_id, client_secret: client_secret)
 response = token.create(authorization_code: authorization_code, redirect_uri: "https://localhost:8080")
 response.status # => 200
 response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621558627}
@@ -65,7 +76,7 @@ response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=
 `access_token` is the value obtained from Authorization flow.
 
 ```ruby
-client = StudyplusForSchoolSync::Client.new(base_url: ENV["BASE_URL"], access_token: access_token)
+client = StudyplusForSchoolSync::Client.new(base_url: base_url, access_token: access_token)
 response = client.create_partner(school_name: "school A")
 response.status # => 200
 response.body # => {"public_id"=>"12345abcde"}
