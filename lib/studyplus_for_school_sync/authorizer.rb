@@ -11,13 +11,13 @@ module StudyplusForSchoolSync
 
     attr_reader :base_url, :client_id, :redirect_uri, :scopes
 
-    # @param [String] base_url API domain
-    # @param [String] client_id ApplicationClientID
-    # @param [String] redirect_uri
-    # @param [Array] scopes 
-    def initialize(base_url: nil, client_id: nil, redirect_uri: nil, scopes: DEFAULT_SCOPES)
-      @base_url = base_url || ENV["BASE_URL"]
-      @client_id = client_id || ENV["CLIENT_ID"]
+    # @param base_url [String] API domain
+    # @param client_id [String] ApplicationClientID
+    # @param redirect_uri [String]
+    # @param scopes [Array]
+    def initialize(base_url:, client_id:, redirect_uri: nil, scopes: DEFAULT_SCOPES)
+      @base_url = base_url
+      @client_id = client_id
       @redirect_uri = redirect_uri || OOB_URI
       @scopes = scopes
     end
