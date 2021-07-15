@@ -43,6 +43,10 @@ Redirect Server Start:
 
 => https://localhost:8080/
 
+If to get a token with a form
+
+    $ BASE_URL=[BASE_URL] bundle exec studyplus_for_school_sync server
+
 If you want to change the port
 
     $ bundle exec studyplus_for_school_sync server --port 3000
@@ -65,7 +69,7 @@ response = token.create(authorization_code: authorization_code, redirect_uri: "h
 response.status # => 200
 response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621558627}
 
-
+# Refresh token
 response = token.refresh(response.body["refresh_token"])
 response.status # => 200
 response.body # => {"access_token"=>"xxx", "token_type"=>"Bearer", "expires_in"=>86399, "refresh_token"=>"xxx", "scope"=>"learning_material_supplier lms_passcode_issue", "created_at"=>1621558753}
@@ -109,6 +113,12 @@ response = client.create_passcode(student_public_id)
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/yshimada0330/studyplus_for_school_sync. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+1. Fork it ( https://github.com/yshimada0330/studyplus_for_school_sync/fork )
+1. Create your feature branch (`git checkout -b my-new-feature`)
+1. Commit your changes (`git commit -am 'Add some feature'`)
+1. Push to the branch (`git push origin my-new-feature`)
+1. Create new Pull Request
 
 ## License
 
