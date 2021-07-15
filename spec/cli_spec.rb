@@ -1,4 +1,20 @@
 RSpec.describe StudyplusForSchoolSync::Cli do
+  describe "#server" do
+    subject { described_class.start(%w[server --port 3000])}
+
+    let(:server) { instance_double(StudyplusForSchoolSync::Server) }
+    let(:params) { { port: "3000" } }
+
+    before do
+      allow(StudyplusForSchoolSync::Server).to receive(:new).and_return(server)
+    end
+
+    it do
+      expect(server).to receive(:start).with(params).once
+      subject
+    end
+  end
+
   describe "#authorize" do
     subject { described_class.start(%w[authorize https://example.com xxxxxxxx --redirect_uri http://localhost --scopes a,b])}
 
