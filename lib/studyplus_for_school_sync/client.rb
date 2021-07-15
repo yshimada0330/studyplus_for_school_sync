@@ -5,11 +5,14 @@ require "faraday/encoding"
 require "faraday_middleware"
 
 module StudyplusForSchoolSync
+  # Sync API Http Client
   class Client
     include Endpoint
 
     attr_accessor :access_token
 
+    # @param base_url [String] API domain
+    # @param access_token [String] OAuth access token
     def initialize(base_url:, access_token: nil)
       @base_url = base_url
       @access_token = access_token
@@ -20,30 +23,49 @@ module StudyplusForSchoolSync
       end
     end
 
+    # GET Http Request
+    # @param path [String]
+    # @param params [Hash]
+    # @return [Hash] API response
     def get(path:, params: nil)
       @conn.get(build_url(path)) do |req|
         req.params = params if params
       end
     end
 
+    # POST Http Request
+    # @param path [String]
+    # @param params [Hash]
+    # @return [Hash] API response
     def post(path:, params: nil)
       @conn.post(build_url(path)) do |req|
         req.body = params.to_json if params
       end
     end
 
+    # PUT Http Request
+    # @param path [String]
+    # @param params [Hash]
+    # @return [Hash] API response
     def put(path:, params: nil)
       @conn.put(build_url(path)) do |req|
         req.body = params.to_json if params
       end
     end
 
+    # PATCH Http Request
+    # @param path [String]
+    # @param params [Hash]
+    # @return [Hash] API response
     def patch(path:, params: nil)
       @conn.patch(build_url(path)) do |req|
         req.body = params.to_json if params
       end
     end
 
+    # DELETE Http Request
+    # @param path [String]
+    # @return [Hash] API response
     def delete(path:)
       @conn.delete(build_url(path))
     end
