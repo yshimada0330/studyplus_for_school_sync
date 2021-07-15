@@ -1,20 +1,79 @@
 <html>
     <head>
       <meta charset="utf-8"/>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
-        <h2>Authorization Code</h2>
-        <div><%= code %></div>
+      <div class="container">
+        <div class="row  my-3">
+          <h1>StudyplusForSchoolSync</h1>
+        </div>
+        <div class="row my-3">
+          <div class="col-6">
+            <h2>Authorization Code</h2>
+            <input class="form-control" type="text" value="<%= code %>" aria-label="readonly input example" readonly>
+          </div>
+        </div>
 
-        <h2>Request Token</h2>
-        <form action="<%= ENV["BASE_URL"]%>/learning_material_supplier_api/v1/oauth/token" method="post">
-          <p>client_id: <input type="text" name="client_id" value="<%= ENV["CLIENT_ID"]%>"></p>
-          <p>client_secret: <input type="text" name="client_secret"></p>
-          <p>redirect_uri: <input type="text" name="redirect_uri"></p>
-          <p>grant_type: <input type="text" name="grant_type" value="authorization_code"></p>
-          <p>code: <input type="text" name="code" value="<%= code %>"></p>
+        <div class="row my-3">
+          <div class="col-6">
+            <h2>Request Token</h2>
+            <div class="card">
+              <div class="card-body">
+              The token can be obtained from the sdk or form
+              </div>
+            </div>
+            <h3>To get a token with a sdk</h3>
+            <div class="card">
+              <div class="card-body">
+                <pre>
+                <code>
+token = StudyplusForSchoolSync::Token.new(
+          base_url: base_url,
+          client_id: client_id,
+          client_secret: client_secret
+        )
+response = token.create(
+             authorization_code: "<%= code %>",
+             redirect_uri: redirect_uri
+            )
+                  </code>
+                </pre>
+              </div>
+            </div>
+            <h3>To get a token with a form</h3>
+            BASE_URL:
+            <% if ENV["BASE_URL"] %>
+              <%= ENV["BASE_URL"] %>
+            <% else %>
+            <p class="text-danger">Specify the environment variable to start!!</p>
+            <% end %>
+            <form action="<%= ENV["BASE_URL"]%>/learning_material_supplier_api/v1/oauth/token" method="post">
+              <div class="mb-3">
+                <label class="form-label">client_id: </label>
+                <input type="text" name="client_id" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">client_secret: </label>
+                <input type="text" name="client_secret" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">redirect_uri: </label>
+                <input type="text" name="redirect_uri" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">grant_type: </label>
+                <input type="text" name="grant_type" value="authorization_code" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">code: </label>
+                <input type="text" name="code" value="<%= code %>" class="form-control">
+              </div>
 
-          <input type="submit" value="送信">
-        </form>
+              <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
