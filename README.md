@@ -1,5 +1,6 @@
 # StudyplusForSchoolSync
 
+[![Gem Version](https://badge.fury.io/rb/studyplus_for_school_sync.svg)](https://badge.fury.io/rb/studyplus_for_school_sync)
 [![Build Status](https://travis-ci.com/yshimada0330/studyplus_for_school_sync.svg?branch=master)](https://travis-ci.com/yshimada0330/studyplus_for_school_sync)
 [![Maintainability](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/maintainability)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/be0e005027ea497a53db/test_coverage)](https://codeclimate.com/github/yshimada0330/studyplus_for_school_sync/test_coverage)
@@ -16,7 +17,7 @@ A Ruby Client for [Studyplus for School SYNC API](https://studyplus.github.io/fs
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'studyplus_for_school_sync', github: 'yshimada0330/studyplus_for_school_sync'
+gem 'studyplus_for_school_sync'
 ```
 
 And then execute:
